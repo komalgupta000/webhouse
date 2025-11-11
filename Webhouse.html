@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    .header-main {
+        width: 100%;
+        height: 7vh;
+        background-color: rgb(9, 37, 201);
+        /* position: fixed; */
+    }
+    .header-main p {
+        color: white;
+        text-align: center;
+        font-size: 20px;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    .section-right li {
+        display: inline;
+        margin-left: 10px;
+        font-weight: 600;
+    }
+    .section-right li:hover {
+        color: orange;
+    }
+    .section-right ul {
+        margin-left: 120px;
+    }
+    .dropdown {
+        position: absolute;
+        background-color: white;
+        display: none;
+    }
+    .dropdown ul {
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+    .dropdown ul li {
+        display: block;
+        color: black;
+        padding: 20px 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .dropdown ul li:hover {
+        color: orange;
+    }
+    .section-right ul li:hover .dropdown {
+        cursor: pointer;
+        display: block;
+    }
+    .mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  background: rgba(228, 226, 226, 0.7);
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: left 0.4s ease-in-out;
+  z-index: 99;
+  padding: 80px 20px
+}
+.mobile-menu.active {
+  left: 0;
+}
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mobile-menu ul li {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-menu ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.mobile-menu ul li a:hover {
+  color: orange;
+}
+.menu-toggle {
+  font-size: 25px;
+  cursor: pointer;
+  color: #333;
+  z-index: 101;
+  border: 4px solid #333;     /* border add */
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;         /* smooth corners */
+  transition: all 0.3s ease;
+}
+.menu-toggle:hover {
+  background-color: #0925c9;
+  color: #fff;
+  border-color: #0925c9;
+}
+    .section-1-left {
+        width: 100%;
+        margin-top: 10px;
+        height: 90vh;
+    }
+    .section-1 {
+        background-color: #e6eef4;
+    }
+
+    .section-2 h2 {
+        font-weight: 700;
+        font-size: 28px;
+        color: #113877 !important;
+        margin-bottom: 12px;
+        font-family: sans-serif;
+    }
+
+    .section-2 span {
+        color: #F96027;
+    }
+
+    .section-2 p {
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    /* .section-2 button{
+        background: linear gradient (#5456d0, #9753ae);
+    } */
+    .btn button:hover {
+        background-color: #6a11cb;
+    }
+
+    .section-2 button:hover .btn {
+        cursor: pointer;
+
+    }
+
+    @media(max-width:1000px) {
+        .section-1-right {
+            position: relative;
+            top: 150px;
+        }
+    }
+
+    @media(max-width:1000px) {
+        .section-2 {
+            position: relative;
+            top: 320px;
+        }
+    }
+
+    .section-3 h2 {
+        text-align: center;
+        color: rgba(63, 16, 232, 0.945);
+    }
+
+    @media(max-width:1000px) {
+        .section-3 {
+            position: relative;
+            top: 270px;
+        }
+    }
+
+    .section-3 .card {
+        height: 320px;
+        align-items: center;
+        text-align: center;
+        font-weight: 500;
+        border-radius: 5%;
+    }
+
+    .section-3 .card i {
+        font-size: 28px;
+        margin-top: 30px;
+        padding: 20px 10px;
+        background: #295ee3;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        color: white;
+        box-shadow: grey;
+    }
+
+    .section-3 .card a {
+        color: #113878;
+        font-weight: 500;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .section-3 .card:hover {
+        background-image: url(https://www.webhouseindia.com/public/front/images/background-image1.svg);
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        background-color: rgb(206, 249, 235);
+        background-size: 30%;
+    }
+
+    .section-4 {
+        /* margin-top: 50px; */
+        /* height:95vh; */
+        text-align: center;
+    }
+
+    .section-4 .card {
+        height: 350px;
+        /* margin-top: 30px; */
+    }
+
+    .section-4 .card img {
+        margin-top: 20px;
+        width: 300px;
+        margin-left: 25px;
+    }
+
+    .section-4 .card:hover {
+        background-color: #c1f5cd;
+        background-size: 30%;
+    }
+
+    @media(max-width:1000px) {
+        .section-4 {
+            position: relative;
+            top: 270px;
+        }
+    }
+
+    .section-5 {
+        margin-top: 90px;
+        height: 50vh;
+        background-color: #e9ebec;
+        text-align: center;
+    }
+
+    .section-5 ul {
+        padding-top: 40px;
+    }
+
+    .section-5 ul li {
+        display: inline;
+        font-size: 38px;
+        color: #F96027;
+    }
+
+    .section-5 p {
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    @media(max-width:1000px) {
+        .section-5 {
+            position: relative;
+            top: 300px;
+            height: 70vh;
+        }
+    }
+
+    .section-6 {
+        text-align: center;
+    }
+
+    @media(max-width:1000px) {
+        .section-6 {
+            position: relative;
+            top: 800px;
+        }
+    }
+
+    .section-7 {
+        margin-top: 50px;
+        text-align: center;
+        background-color: #e9ebec;
+    }
+
+    .section-7 p {
+        font-weight: 700;
+        font-size: 31px;
+        /* padding-top: 40px; */
+    }
+
+    .section-7 .card {
+        margin-top: 40px;
+        height: 100px;
+        width: 180px;
+        /* margin-left: 50px; */
+    }
+
+    .section-7 img {
+        border-radius: 20%;
+    }
+
+    @media(max-width:1000px) {
+        .section-7 {
+            position: relative;
+            top: 300px;
+        }
+    }
+
+    .section-8 {
+        margin-top: 30px;
+        text-align: center;
+        height: 50vh;
+        background: linear-gradient(to left, #9f26b5 0, #295ee3 100%)
+    }
+
+    .section-8 h3 {
+        padding-top: 70px;
+        color: white;
+        font-size: 22pt;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .section-8 p {
+        font-size: 21px;
+        color: #fff;
+        margin-bottom: 21px;
+    }
+
+    @media(max-width:1000px) {
+        .section-8 {
+            position: relative;
+            top: 300px;
+        }
+    }
+
+    .section-9 h4 {
+        margin-top: 50px;
+        font-weight: 700;
+        font-size: 31px;
+        margin-bottom: 21px;
+    }
+
+    .section-9 .card {
+        height: 150px;
+        margin-top: 70px;
+        align-items: center;
+    }
+
+    .section-9 .card img {
+        width: 50px;
+        margin-top: 40px;
+    }
+
+    .section-9 .card p {
+        text-align: center;
+    }
+
+    .section-9-left .card {
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        border-top-left-radius: 40px;
+    }
+
+    .section-9-left .card:hover {
+        background-color: #F96027;
+        color: white;
+        transform: 0.5s;
+    }
+
+    @media(max-width:1000px) {
+        .section-9 {
+            position: relative;
+            top: 300px;
+        }
+    }
+
+    .section-10 {
+        text-align: center;
+    }
+
+    .section-10 h5 {
+        font-size: 35px;
+        font-weight: 700;
+    }
+
+    .section-10 p {
+        font-size: 18px;
+        margin-bottom: 21px;
+    }
+
+    .section-10 input {
+        margin-left: 40px;
+        width: 270px;
+        text-align: center;
+    }
+
+    .section-10 .card {
+        height: 500px;
+        border-radius: 10px;
+    }
+
+    .section-10 .card button {
+        width: 270px;
+        align-items: center;
+        margin-left: 40px;
+    }
+
+    .section-10 .card:hover {
+        background-color: rgb(164, 164, 249);
+        transition: 1s;
+    }
+
+    @media(max-width:900px) {
+        .section-10 {
+            position: relative;
+            top: 300px;
+        }
+    }
+
+    .section-11 {
+        background-image: url(https://www.webhouseindia.com/public/images/webhouseindia-footer-background.jpg);
+    }
+
+    .section-11 h6 {
+        margin-top: 60px;
+        color: #fff;
+        margin-bottom: 19px;
+        font-size: 24px;
+        line-height: 36px;
+        font-weight: 700;
+        margin-left: 40px;
+    }
+
+    .section-11 ul li {
+        display: inline;
+        display: block;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .section-11 span {
+        font-size: 10px;
+        padding: 1px 5px 1px 5px;
+        border-radius: 6px;
+    }
+
+    @media(max-width:1000px) {
+        .section-11 {
+            position: relative;
+            top: 350px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container-fluid header-main">
+        <p>Start Your Online Journey Today !</p>
+    </div>
+    <div class="container header">
+        <div class="section-left">
+            <img src="https://www.webhouseindia.com/public/front/images/logos/webhouseindia-logo.png" alt=""
+                style="height: 6vh;">
+        </div>
+        <div class="section-right d-none d-xl-block d-md-none">
+            <ul>
+                <li><i class="fa-solid fa-house-chimney"></i> Home</li>
+                <li>Services
+                    <div class="dropdown">
+                        <ul>
+                            <li>>Web Design</li>
+                            <li>>Ecommerce Website</li>
+                            <li>>Web Application</li>
+                            <li>>Mobile App Development</li>
+                            <li>>Graphic Design</li>
+                            <li>>SEO/SEM</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>Work Portfolio</li>
+                <li>Client Reviews</li>
+                <li>Contact</li>
+                <button class="btn btn-md" style="margin-left: 10px; background-color: #F96027; color: white;">Let's
+                    Talk <i class="fa-solid fa-mobile-screen"></i></button>
+            </ul>
+        </div>
+        <i class="fa-solid fa-bars d-lg-none d-md-block menu-toggle" id="menuBtn"></i>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+    <div class="container-fluid section-1">
+        <div class="container section-1-left">
+            <div class="row">
+                <div class="col-lg-6" style="margin-top: 120px;">
+                    <h1 style="color:  #113877; font-family: 'Dosis', sans-serif; font-size: 30px; font-weight: 700;">
+                        Webhouseindia - Your Trusted
+                        <br>
+                        Website Design Company in Patna,
+                        <br>
+                        Bihar
+                    </h1>
+                    <h3 style="font-family: 'Dosis', sans-serif; font-size: 18px;">We are <b> Web Designers, Developers
+                            & Digital Marketing Company From Patna </b> dedicated to creative and results-driven
+                        web-based solutions using the latest trends and technologies</h3>
+                    <button class="btn btn-md mt-3" style="background-color: #F96027; color: white;"><i
+                            class="fa-solid fa-paper-plane"></i> Quick Enquiry</button>
+                    <button class="btn btn-primary btn-md mt-3"><i class="fa-solid fa-bolt-lightning"></i>Explore Our
+                        Portfolio</button>
+                </div>
+                <div class="col-lg-6 section-1-right ">
+                    <img src="https://www.webhouseindia.com/public/front/images/banners/WebhouseIndia-web-design-company-india.png"
+                        alt="" class="img-fluid" style="margin-top: 40px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container section-2 mt-5">
+        <div class="row">
+            <div class="col-lg-6 section-2-left">
+                <img src="https://www.webhouseindia.com/public/front/images/webhouseindia-banner.png" alt=""
+                    class="img-fluid" style="margin-top: 40px;">
+            </div>
+            <div class="col-lg-6">
+                <h2>One Stop Solution For Website Design, Custom Web Application & <span> eCommerce Website Design
+                        Services </span> in Patna</h2>
+                <p><b>Transforming Brands through Research Driven Web Design !™</b></p>
+                <p><b>Webhouseindia:</b> Your Trusted Website Design Company in Patna with Over 6 Years of Expertise.
+                    Our flagship services include <b>Website Design, Ecommerce Website Design, Custom Web Application
+                        Development , SEO,</b> & <b> UI/UX Design </b> services. With all of our services under one
+                    roof, we’re able to provide a cohesive approach to your online marketing, driving the marketing
+                    results you deserve. We have the ability to market your website through visual appeal, best-practice
+                    user-experience design, and SEO expertise to bring traffic to your professional website & online
+                    marketing tool, and convert them into customers.</p>
+                <div class="div btn"></div>
+                <button class="btn btn-md"
+                    style="background: linear-gradient(to left,  #6a11cb 0%, #2575fc 100%); color: white;">Let’s talk to
+                    grow your business online »</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <hr>
+
+
+    <div class="container section-3 mt-5">
+        <h2>What We Do - Our Core Services</h2>
+        <p style="text-align: center;">We provides innovative web technology services for <b>startups, companies, large
+                & small businesses.</b> We always delivers best in <br> class results for the clients at affordable
+            cost.</p>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mt-5">
+                <div class="card no-1">
+                    <i class="fa-solid fa-tv"></i>
+                    <br>
+                    <p><b>Website Design</b></p>
+                    <p>We design dynamic website which are fully responsive & easy to maintain.</p>
+                    <a href="">Read More➞</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mt-5">
+                <div class="card">
+                    <i class="fa-solid fa-cart-shopping" style="background-color: #F96027;"></i>
+                    <br>
+                    <p><b>eCommerce Website</b></p>
+                    <p>We develop custom ecommerce website design for our clients which sells</p>
+                    <a href="">Read More➞</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mt-5">
+                <div class="card">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <br>
+                    <p><b>Web App Development</b></p>
+                    <p>We build custom ecommerce websites which are best in class with all the features.</p>
+                    <a href="">Read More➞</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mt-5">
+                <div class="card">
+                    <i class="fa-solid fa-mobile-screen" style="background-color: #F96027;"></i>
+                    <br>
+                    <p><b>Mobile Application</b></p>
+                    <p>Our expert developer make hybrid, cross, native mobile apps for android & Ios.</p>
+                    <a href="">Read More➞</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6"></div>
+            <div class="col-md-6 col-lg-3 mt-5">
+                <div class="card">
+                    <i class="fa-brands fa-google"></i>
+                    <br>
+                    <p><b>SEO/SEM</b></p>
+                    <p>Our team uses modern seo services, backed by the best digital marketing practices.</p>
+                    <a href="">Read More➞</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mt-5">
+                <div class="card">
+                    <i class="fa-solid fa-paintbrush" style="background-color: #F96027;"></i>
+                    <br>
+                    <p><b>UI/UX Designing</b></p>
+                    <p>We design awesome app wireframes, logos, social media post .</p>
+                    <a href="">Read More➞</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section-4 mt-5">
+        <h3><b>The Proof is in The Work</b></h3>
+        <p>Go through our recent projects and discover how we’ve made difference for several businesses!</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12 mt-5">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/images/portfolio/levane-pharmaceutical-company-Updlnrq8a-webhouseindai_mockup.webp"
+                            alt="">
+                        <a class="view_details"
+                            href="https://www.webhouseindia.com/portfolio/levane-pharmaceutical-company">www.Levane.in</a>
+                        <a class="visit_site" target="_blank" href="https://www.Levane.in">Visit Site➞</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mt-5">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/images/portfolio/Jpbulandcement-patna-bihar-mF1m28SxK-webhouseindai_mockup.webp"
+                            alt="">
+                        <a class="view_details"
+                            href="https://www.webhouseindia.com/portfolio/Jpbulandcement-patna-bihar">www.JpBulandcement.com</a>
+                        <a class="visit_site" target="_blank" href="https://www.JpBulandcement.com">Visit Site➞</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mt-5">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/images/portfolio/SunilSoundService-driSOznU9-webhouseindai_mockup.webp"
+                            alt="">
+                        <a class="view_details"
+                            href="https://www.webhouseindia.com/portfolio/SunilSoundService">www.SunilSoundService.com</a>
+                        <a class="visit_site" target="_blank" href="https://www.SunilSoundService.com">Visit Site➞</a>
+                    </div>
+
+                </div>
+                <div class="but text-align-center">
+                    <button class="btn btn-primary btn-md" style="margin-top:30px; width:240px;"><i
+                            class="fa-solid fa-bolt-lightning"></i>Explore Our Portfolio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-5">
+        <div>
+            <ul>
+                <img src="https://www.webhouseindia.com/public/front/images/google-logo.svg" alt=""
+                    style="margin-bottom:20px; margin-right:20px;">
+
+                <li>4.9
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </li>
+            </ul>
+        </div>
+        <a href="https://g.page/webhouseindia" target="_blank" style="color: black;">Read All Google Reviews</a>
+        <p>4.9/5 Rating by 170+ <span style="color: #295ee3;">Clients on Google, Glassdoor, Cluth &amp; GoodFirms</span>
+        </p>
+        <img src="https://www.webhouseindia.com/public/front/images/verified-clients-webh.png" alt="">
+    </div>
+
+    <div class="container  section-6 mt-5">
+        <h3>What Our Valuable Customer Say.</h3>
+        <p>Rated
+            <span style="color: #F96027;">4.9
+                <i class="fa-solid fa-star"></i>
+            </span>by Verified Clients
+        </p>
+    </div>
+
+    <div class="section-7">
+        <p>Trusted By Established Business & Brands
+        <p>
+        <h5>Powering 180+ Businesses</h5>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/kamdhenu-cement.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/jpbulandcement.webp" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/venus-star.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/securefree.webp" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/landingecommerce/times-quartz.png"
+                            alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/elysia-medical.webp" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/asia-pacific.webp" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/delhi-public-school.png"
+                            alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/hariyalihub-logo.png" alt=""
+                            style="margin-top: 20px;">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/sunilsoundservice.webp"
+                            alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/rajkumarseeds.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/buxar-foundation.webp"
+                            alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/levane-pharmaceutical-company.png"
+                            alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/pawit-rishta.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/hempbuti-logo.png" alt=""
+                            style="margin-top: 40px;">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/jeevandata.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/brandvision.webp" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/neha-ashi-international.png"
+                            alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/aconfin.webp" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/movers-packers.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6"></div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/pragatizone.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="card">
+                        <img src="https://www.webhouseindia.com/public/front/images/clients/truly-aqua.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-8">
+        <h3>Are You Ready to Grow Your Business Online With <br>#1 Website Development Company in Patna ?</h3>
+        <p>Click the button below for a free proposal</p>
+        <button class="btn btn-md" style="background-color: #F96027;color: aliceblue;"><i
+                class="fa-solid fa-comments"></i> Get Free Website Proposal/Quotation >></button>
+    </div>
+
+    <div class="container section-9">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <h4>Technology Stack</h4>
+                <p>Webhouseindia have an in-house team of technical experts to help you bring your designs to reality,
+                    whether your have a website project, custom web application or android app.</p>
+                <p>We always use modern technology to design and develop most advanced and agile platform for businesses
+                    and startups. We are expertise in <b> Laravel, Wordpress, Bootstrap, Reactjs, Nodejs, Vuejs,
+                        Angular, Cakephp, MongoDB, MySQl, Digitalocean, AWS, Azure etc</b></p>
+                <div class="section-9-left">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="card">
+                                <img src="https://www.webhouseindia.com/public/front/images/technology/web_Design/nodejs.svg"
+                                    alt="">
+                                <p>NodeJs</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="card">
+                                <img src="https://www.webhouseindia.com/public/front/images/technology/web_Design/laravel.svg"
+                                    alt="">
+                                <p>Laravel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card">
+                            <img src="https://www.webhouseindia.com/public/front/images/technology/web_Design/Vuejs.svg"
+                                alt="">
+                            <p>Vuejs</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card">
+                            <img src="https://www.webhouseindia.com/public/front/images/technology/web_Design/reactjs.svg"
+                                alt="">
+                            <p>ReactJs</p>
+                        </div>
+                        <div class="card">
+                            <img src="https://www.webhouseindia.com/public/front/images/technology/mysql.png " alt=""
+                                style="width:100px;">
+                            <p>MySql</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <div class="container section-10 mt-5">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <h5>Let's 5x Your Online Business With <br> Webhouseindia!</h5>
+                <p>Whatever your requirement, it should be a dynamic website, a complex web application, an ecommerce
+                    website, mobile app (or) digital marketing we have a solution for you. Lets talk !</p>
+                <h5 style="color: #F96027; font-size: 30px;">30 Day Money-Back Guarantee</h5>
+                <p>If you're not 100% satisfied with Webhouseindia services, we'll refund your payment. No hassle, no
+                    risk.</p>
+                <button class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Get Quote</button>
+
+                <button class="btn btn-md" style="background-color: #F96027;color: #fff;"><i
+                        class="fa-solid fa-bolt-lightning"></i> Contact Us</button>
+            </div>
+            <div class="col-lg-4 col-md-12 mt-5">
+                <div class="card">
+                    <h5 style="font-size: 28px; margin-top: 20px;">Get Free <span> Website <br> Design</span> Proposal
+                        Today !</h5>
+                    <p>Free Consultation</p>
+                    <p>Enter your phone number and we'll connect you with the right person</p>
+                    <input type="text" placeholder="Enter Your Name">
+                    <br>
+                    <input type="text" placeholder="Enter Your Phone Number">
+                    <br>
+                    <button class="btn btn-primary btn-md">Submit</button>
+                    <br>
+                    <p>Call For Free Consultancy</p>
+                    <h6><i class="fa-solid fa-phone"></i>9048269472</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid section-11">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-12">
+                    <h6>Helpful Menu</h6>
+                    <ul>
+                        <li><i class="fa-solid fa-angle-right"></i>Home</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>About Us</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>Why Choose Us <span
+                                style="background-color: #F96027;">Latest</span></li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>How We Work</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>FAQS</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>Terms & Condition</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-12 col-12">
+                    <h6>Services</h6>
+                    <ul>
+                        <li><i class="fa-solid fa-angle-right"></i>Website Design</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>Ecommerce Website</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>Web Application</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>Mobile Application</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>UL/UX Designing</li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>SEO/SEM</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-12 col-12">
+                    <h6>Quick Link</h6>
+                    <ul>
+                        <li><i class="fa-solid fa-angle-right"></i>Work Portfolio <span
+                                style="background-color: rgb(106, 216, 106);">New</span></li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>Client Review <span
+                                style="background-color: rgb(162, 162, 34);">Latest</span></li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>Careers <span
+                                style="background-color: #2575fc;">Hiring</span></li>
+                        <br>
+                        <li><i class="fa-solid fa-angle-right"></i>Contact Us <span
+                                style="background-color:#F96027 ;">Location</span></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <h6>Support</h6>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i>Building No.-159, 3rd Floor, Bhagwat Nagar Main Rd,
+                            near Your’s Super Market, Kumhrar, Patna, Bihar 800026</li>
+                        <br>
+                        <li><i class="fa fa-volume-control-phone"></i> +91 9709796347 (India)</li>
+                        <br>
+                        <li><i class="fa-solid fa-phone"></i> +974 31552635 (Doha, Qatar)</li>
+                        <br>
+                        <li><i class="fa-solid fa-envelope"></i>Info@WebhouseIndia.com</li>
+                        <br>
+                        <li><i class="fa-solid fa-envelope"></i>Support@WebhouseIndia.com</li>
+                    </ul>
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>Trusted by</h6>
+                            <img src="https://www.webhouseindia.com/public/front/images/norton.png" alt="">
+                            <img src="https://www.webhouseindia.com/public/front/images/security.png" alt="">
+                            <img src="https://www.webhouseindia.com/public/front/images/mcafee.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+let menuOpen = false;
+
+menuBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+  menuOpen = !menuOpen;
+  
+  // Change icon (bars <-> close)
+  if(menuOpen){
+    menuBtn.classList.remove('fa-bars');
+    menuBtn.classList.add('fa-xmark');
+  } else {
+    menuBtn.classList.remove('fa-xmark');
+    menuBtn.classList.add('fa-bars');
+  }
+});
+    </script>
+</body>
+
+</html>
